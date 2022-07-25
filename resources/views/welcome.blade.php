@@ -1,14 +1,9 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
+@extends('layouts.main')
+@section('title', 'HDC Events')
 
-        <title>Laravel</title>
-
-        
-    </head>
-    <body>
+@section('content')
+        <h1>Laravel</h1>
+        <img src="/img/banner.jpg" alt="Banner">
         @if(10 > 5)
             <p>A condição é true</p>
         @endif
@@ -36,5 +31,4 @@
             <p>{{ $loop->index }} - {{ $nome }}</p>
         @endforeach
 
-    </body>
-</html>
+@endSection
