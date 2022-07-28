@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\EventoController;
+use App\Http\Controllers\ContatoController;
+use App\Http\Controllers\ProdutoController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,36 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/', [EventoController::class, 'index']);
+Route::get('/eventos/criar', [EventoController::class, 'criar']);
 
-    $nome = "Pedro";
-    $idade = 32;
-    $profissao = "Desenvolvedor Pleno";
+Route::get('/produtos', [ProdutoController::class, 'index']);
+Route::get('/produto/{id?}', [ProdutoController::class, 'produto']);
 
-    $arr = [1,2,3,4,5,6];
-    $nomes = ["Pedro", "Flavia", "Capitu", "Marley"];
-
-    return view('welcome',
-        [
-            'nome' => $nome,
-            'idade' => $idade,
-            'profissao' => $profissao,
-            'arr' => $arr,
-            'nomes' => $nomes
-        ]);
-});
-
-Route::get('/produtos', function() {
-
-    $busca = request('search');
-
-    return view('produtos', ['busca' => $busca]);
-});
-
-Route::get('/contato', function() {
-    return view('contato');
-});
-
-Route::get('/produto/{id?}', function ($id = null) {
-    return view('produto', ['id' => $id]);
-});
+Route::get('/contato', [ContatoController::class, 'index']);
